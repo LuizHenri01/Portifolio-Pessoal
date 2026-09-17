@@ -122,3 +122,178 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .link-navbar { padding: 0.7rem 0.9rem; }
   .link-navbar::after { display: none; }
 }
+
+.hero {
+  position: relative;
+  padding: calc(var(--altura-navbar) + 4.5rem) 0 5.5rem;
+  overflow: hidden;
+}
+
+.malha-hero {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 25% 30%, #000 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 25% 30%, #000 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.brilho-hero {
+  position: absolute;
+  top: -120px;
+  right: -60px;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12), transparent 65%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.hero .container { position: relative; z-index: 1; }
+
+.saudacao {
+  font-family: var(--fonte-codigo);
+  font-size: 0.9rem;
+  color: var(--dourado);
+  margin: 0 0 0.75rem;
+}
+
+.titulo-hero {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.5rem, 7vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.subtitulo-hero {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: var(--branco);
+  margin: 1rem 0 0;
+  font-weight: 500;
+}
+
+.separador-dourado { color: var(--dourado); margin: 0 0.6rem; }
+
+.texto-hero {
+  color: var(--texto-secundario);
+  max-width: 52ch;
+  margin: 1.2rem 0 2rem;
+}
+
+.acoes-hero { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+
+.botao-dourado, .botao-contorno {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--raio);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--dourado);
+  transition: transform var(--transicao), background-color var(--transicao),
+              color var(--transicao), box-shadow var(--transicao);
+}
+
+.botao-dourado { background-color: var(--dourado); color: #080808; }
+
+.botao-dourado:hover {
+  background-color: var(--dourado-claro);
+  color: #080808;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(212, 175, 55, 0.18);
+}
+
+.botao-contorno { background-color: transparent; color: var(--branco); border-color: var(--borda); }
+
+.botao-contorno:hover {
+  border-color: var(--dourado);
+  color: var(--dourado-claro);
+  transform: translateY(-2px);
+}
+
+.redes-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem 0 0;
+}
+
+.link-rede {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--texto-secundario);
+  font-size: 0.9rem;
+}
+
+.link-rede i { font-size: 1.1rem; }
+.link-rede:hover { color: var(--dourado-claro); }
+
+.cartao-codigo {
+  background-color: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.barra-cartao {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.7rem 1rem;
+  background-color: #0d0d0e;
+  border-bottom: 1px solid var(--borda);
+}
+
+.ponto-janela { width: 9px; height: 9px; border-radius: 50%; background-color: #2c2c2e; }
+.ponto-janela:first-child { background-color: var(--dourado); }
+
+.nome-arquivo {
+  margin-left: auto;
+  font-family: var(--fonte-codigo);
+  font-size: 0.78rem;
+  color: var(--texto-secundario);
+}
+
+.codigo {
+  margin: 0;
+  padding: 1.4rem 1.25rem;
+  font-family: var(--fonte-codigo);
+  font-size: 0.83rem;
+  line-height: 1.85;
+  color: var(--texto-secundario);
+  overflow-x: auto;
+}
+
+.cod-chave { color: var(--dourado); }
+.cod-var { color: var(--branco); }
+.cod-texto { color: var(--dourado-claro); }
+.cod-numero { color: #cfcfcf; }
+
+@media (max-width: 991.98px) {
+  .cartao-codigo { margin-top: 1rem; }
+}
+
+@media (max-width: 767.98px) {
+  .hero { padding: calc(var(--altura-navbar) + 2.5rem) 0 4rem; }
+
+  .acoes-hero .botao-dourado,
+  .acoes-hero .botao-contorno {
+    flex: 1 1 100%;
+    justify-content: center;
+    padding: 0.85rem 1.25rem;
+  }
+
+  .redes-hero { gap: 1.25rem; margin-top: 2rem; }
+  .codigo { font-size: 0.76rem; }
+}
