@@ -297,3 +297,102 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .redes-hero { gap: 1.25rem; margin-top: 2rem; }
   .codigo { font-size: 0.76rem; }
 }
+
+.secao {
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+.secao + .secao {
+  border-top: 1px solid var(--borda);
+}
+
+.secao-alternada { background-color: var(--fundo-secundario); }
+
+.cabecalho-secao { margin-bottom: 3rem; max-width: 62ch; }
+
+.titulo-secao {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.linha-dourada {
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin-top: 1rem;
+  background: linear-gradient(90deg, var(--dourado), transparent);
+}
+
+.cartao-perfil {
+  background-color: var(--card);
+  border: 1px solid var(--borda);
+  border-left: 2px solid var(--dourado);
+  border-radius: var(--raio);
+  padding: 1.75rem;
+}
+
+.rotulo-cartao {
+  font-family: var(--fonte-codigo);
+  font-size: 0.8rem;
+  color: var(--dourado);
+  margin: 0 0 1.2rem;
+}
+
+.lista-perfil {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.lista-perfil li {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  font-size: 0.95rem;
+  color: var(--branco);
+  line-height: 1.5;
+}
+
+.lista-perfil i { color: var(--dourado); font-size: 1.05rem; margin-top: 0.15rem; }
+
+.links-perfil {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--borda);
+}
+
+.botao-pequeno {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  color: var(--branco);
+  transition: border-color var(--transicao), color var(--transicao);
+}
+
+.botao-pequeno:hover { border-color: var(--dourado); color: var(--dourado-claro); }
+
+.texto-sobre p {
+  color: var(--texto-secundario);
+  max-width: 68ch;
+  margin-bottom: 1.15rem;
+}
+
+.texto-sobre strong { color: var(--branco); font-weight: 600; }
+
+@media (max-width: 767.98px) {
+  .secao { padding: 4rem 0; }
+}
