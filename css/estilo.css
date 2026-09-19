@@ -396,3 +396,51 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 767.98px) {
   .secao { padding: 4rem 0; }
 }
+
+.texto-secao {
+  color: var(--texto-secundario);
+  margin: 1.2rem 0 0;
+  max-width: 58ch;
+}
+
+.card-skill {
+  height: 100%;
+  background-color: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.6rem;
+  transition: border-color var(--transicao), transform var(--transicao);
+}
+
+.card-skill:hover {
+  border-color: var(--dourado-transparente);
+  transform: translateY(-3px);
+}
+
+.icone-skill { font-size: 1.5rem; color: var(--dourado); }
+
+.titulo-skill {
+  font-family: var(--fonte-titulo);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0.8rem 0 1rem;
+}
+
+.lista-habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-habilidades li {
+  font-size: 0.8rem;
+  color: var(--texto-secundario);
+  background-color: #1b1b1d;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  line-height: 1.5;
+}
