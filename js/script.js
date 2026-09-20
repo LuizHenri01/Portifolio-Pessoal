@@ -50,3 +50,99 @@ document.addEventListener("DOMContentLoaded", () => {
   inicializarEfeitoNavbar();
   inicializarLinkAtivo();
 });
+
+// daodos editaveis 
+const projetos = [
+  {
+    nome: "Analisador de Vendas",
+    descricao: "Leitura de planilhas de vendas e geração de resumos por produto e período.",
+    tecnologias: ["Python", "Pandas", "SQL"],
+    imagem: "",
+    icone: "bi-bar-chart-line",
+    link: "",
+    repositorio: ""
+  },
+  {
+    nome: "Projeto Web",
+    descricao: "Interface responsiva construída com HTML, CSS e JavaScript, com foco em acessibilidade.",
+    tecnologias: ["HTML5", "CSS3", "JavaScript"],
+    imagem: "",
+    icone: "bi-window",
+    link: "",
+    repositorio: ""
+  }
+];
+
+function escaparHTML(texto) {
+  return String(texto)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function montarChips(itens) {
+  return itens.map((item) => `<li class="chip">${escaparHTML(item)}</li>`).join("");
+}
+
+function montarPreviaProjeto(projeto) {
+  if (projeto.imagem) {
+    return `<img class="projeto-preview" src="${escaparHTML(projeto.imagem)}"
+                 alt="Prévia do projeto ${escaparHTML(projeto.nome)}" loading="lazy">`;
+  }
+
+  return `<div class="preview-vazio">
+            <i class="bi ${escaparHTML(projeto.icone || "bi-code-slash")}" aria-hidden="true"></i>
+            <span>Prévia em breve</span>
+          </div>`;
+}
+
+function montarAcoesProjeto(projeto) {
+  const acoes = [];
+
+  if (projeto.link) {
+    acoes.push(`<a class="botao-pequeno botao-pequeno-destaque" href="${escaparHTML(projeto.link)}"
+                   target="_blank" rel="noopener">
+                  <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Ver projeto
+                </a>`);
+  }
+
+  if (projeto.repositorio) {
+    acoes.push(`<a class="botao-pequeno" href="${escaparHTML(projeto.repositorio)}"
+                   target="_blank" rel="noopener">
+                  <i class="bi bi-github" aria-hidden="true"></i> GitHub
+                </a>`);
+  }
+
+  if (acoes.length === 0) {
+    acoes.push('<span class="chip">Link em breve</span>');
+  }
+
+  return acoes.join("");
+}
+
+function renderizarProjetos() {
+  const lista = document.getElementById("listaProjetos");
+  if (!lista) return;
+
+  lista.innerHTML = projetos.map((projeto) => `
+    <div class="col-md-6 col-lg-4">
+      <article class="card-projeto">
+        <div class="projeto-midia">${montarPreviaProjeto(projeto)}</div>
+        <div class="projeto-corpo">
+          <h3 class="projeto-titulo">${escaparHTML(projeto.nome)}</h3>
+          <p class="projeto-descricao">${escaparHTML(projeto.descricao)}</p>
+          <ul class="projeto-tecnologias">${montarChips(projeto.tecnologias)}</ul>
+          <div class="projeto-acoes">${montarAcoesProjeto(projeto)}</div>
+        </div>
+      </article>
+    </div>
+  `).join("");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  inicializarNavegacao();
+  inicializarEfeitoNavbar();
+  inicializarLinkAtivo();
+  renderizarProjetos();
+});
