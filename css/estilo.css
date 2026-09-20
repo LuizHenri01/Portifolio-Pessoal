@@ -444,3 +444,98 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: 0.25rem 0.7rem;
   line-height: 1.5;
 }
+code {
+  font-family: var(--fonte-codigo);
+  font-size: 0.85em;
+  color: var(--dourado-claro);
+}
+
+.card-projeto {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  overflow: hidden;
+}
+
+.projeto-midia {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0d0e;
+  border-bottom: 1px solid var(--borda);
+}
+
+.projeto-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-vazio {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--texto-secundario);
+  font-size: 0.8rem;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.preview-vazio i { font-size: 2rem; color: var(--dourado); }
+
+.projeto-corpo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1.5rem;
+}
+
+.projeto-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.projeto-descricao {
+  color: var(--texto-secundario);
+  font-size: 0.92rem;
+  margin: 0.7rem 0 1.1rem;
+}
+
+.projeto-tecnologias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.4rem;
+}
+
+.chip {
+  font-size: 0.8rem;
+  color: var(--texto-secundario);
+  background-color: #1b1b1d;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  line-height: 1.5;
+}
+
+.projeto-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.botao-pequeno-destaque { border-color: var(--dourado); color: var(--dourado); }
+.botao-pequeno-destaque:hover { background-color: var(--dourado); color: #080808; }
