@@ -1,57 +1,3 @@
-// Fecha o menu hamburger depois de clicar em um link no celular
-function inicializarNavegacao() {
-  const menu = document.getElementById("menuNavegacao");
-  if (!menu) return;
-
-  menu.querySelectorAll(".link-navbar").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (menu.classList.contains("show")) {
-        bootstrap.Collapse.getOrCreateInstance(menu).hide();
-      }
-    });
-  });
-}
-
-function inicializarEfeitoNavbar() {
-  const navbar = document.getElementById("navbarPrincipal");
-  if (!navbar) return;
-
-  const aplicarEstado = () => {
-    navbar.classList.toggle("navbar-rolando", window.scrollY > 24);
-  };
-
-  aplicarEstado();
-  window.addEventListener("scroll", aplicarEstado, { passive: true });
-}
-
-// Marca na navbar a seção que está visível na tela
-function inicializarLinkAtivo() {
-  const links = document.querySelectorAll(".link-navbar");
-  const secoes = [...links]
-    .map((link) => document.querySelector(link.getAttribute("href")))
-    .filter(Boolean);
-
-  if (secoes.length === 0) return;
-
-  const observador = new IntersectionObserver((entradas) => {
-    entradas.forEach((entrada) => {
-      if (!entrada.isIntersecting) return;
-      links.forEach((link) => {
-        link.classList.toggle("ativo", link.getAttribute("href") === `#${entrada.target.id}`);
-      });
-    });
-  }, { rootMargin: "-45% 0px -50% 0px" });
-
-  secoes.forEach((secao) => observador.observe(secao));
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  inicializarNavegacao();
-  inicializarEfeitoNavbar();
-  inicializarLinkAtivo();
-});
-
-// daodos editaveis 
 const projetos = [
   {
     nome: "Analisador de Vendas",
@@ -73,6 +19,21 @@ const projetos = [
   }
 ];
 
+/* Certificações.
+   lembrar de marcar placeholder: true enquanto o item for apenas exemplo de layout. */
+const certificacoes = [
+  {
+    nome: "Introdução à Cibersegurança",
+    instituicao: "Cisco Networking Academy — YDUQS-Diretoria de Ensino",
+    ano: "2026",
+    descricao: "Fundamentos de cibersegurança: ameaças, ataques comuns e boas práticas de proteção.",
+    link: "",
+    placeholder: false
+  }
+];
+
+
+// Evitar que aspas ou sinais nos dados quebrem o HTML geradi
 function escaparHTML(texto) {
   return String(texto)
     .replace(/&/g, "&amp;")
@@ -140,9 +101,91 @@ function renderizarProjetos() {
   `).join("");
 }
 
+function renderizarCertificacoes() {
+  const lista = document.getElementById("listaCertificacoes");
+  if (!lista) return;
+
+  lista.innerHTML = certificacoes.map((certificacao) => {
+    const selo = certificacao.placeholder
+      ? '<span class="selo-placeholder">Exemplo</span>'
+      : "";
+
+    const acao = certificacao.link
+      ? `<a class="botao-pequeno" href="${escaparHTML(certificacao.link)}" target="_blank" rel="noopener">
+           <i class="bi bi-patch-check" aria-hidden="true"></i> Verificar certificado
+         </a>`
+      : '<span class="chip">Link do certificado em breve</span>';
+
+    return `
+      <div class="col-md-6 col-lg-4">
+        <article class="card-certificacao">
+          <div class="topo-certificacao">
+            <i class="bi bi-award" aria-hidden="true"></i>
+            <span class="ano-certificacao">${escaparHTML(certificacao.ano)}</span>
+          </div>
+          ${selo}
+          <h3 class="titulo-certificacao">${escaparHTML(certificacao.nome)}</h3>
+          <p class="instituicao-certificacao">${escaparHTML(certificacao.instituicao)}</p>
+          <p class="descricao-certificacao">${escaparHTML(certificacao.descricao)}</p>
+          ${acao}
+        </article>
+      </div>
+    `;
+  }).join("");
+}
+
+
+// Fecha o menu hamburger depois de clicar em um link no celular
+function inicializarNavegacao() {
+  const menu = document.getElementById("menuNavegacao");
+  if (!menu) return;
+
+  menu.querySelectorAll(".link-navbar").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (menu.classList.contains("show")) {
+        bootstrap.Collapse.getOrCreateInstance(menu).hide();
+      }
+    });
+  });
+}
+
+function inicializarEfeitoNavbar() {
+  const navbar = document.getElementById("navbarPrincipal");
+  if (!navbar) return;
+
+  const aplicarEstado = () => {
+    navbar.classList.toggle("navbar-rolando", window.scrollY > 24);
+  };
+
+  aplicarEstado();
+  window.addEventListener("scroll", aplicarEstado, { passive: true });
+}
+
+// Marca na navbar a seção que está visível na tela
+function inicializarLinkAtivo() {
+  const links = document.querySelectorAll(".link-navbar");
+  const secoes = [...links]
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  if (secoes.length === 0) return;
+
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (!entrada.isIntersecting) return;
+      links.forEach((link) => {
+        link.classList.toggle("ativo", link.getAttribute("href") === `#${entrada.target.id}`);
+      });
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+
+  secoes.forEach((secao) => observador.observe(secao));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   inicializarNavegacao();
   inicializarEfeitoNavbar();
   inicializarLinkAtivo();
   renderizarProjetos();
+  renderizarCertificacoes();
 });
