@@ -577,3 +577,66 @@ code {
   transition: border-color var(--transicao), color var(--transicao),
               background-color var(--transicao);
 }
+
+.card-certificacao {
+  height: 100%;
+  background-color: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transicao), transform var(--transicao);
+}
+
+.card-certificacao:hover {
+  border-color: var(--dourado-transparente);
+  transform: translateY(-3px);
+}
+
+.topo-certificacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.topo-certificacao i { font-size: 1.5rem; color: var(--dourado); }
+
+.ano-certificacao {
+  font-family: var(--fonte-codigo);
+  font-size: 0.8rem;
+  color: var(--texto-secundario);
+}
+
+.titulo-certificacao {
+  font-family: var(--fonte-titulo);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.instituicao-certificacao {
+  color: var(--dourado-claro);
+  font-size: 0.88rem;
+  margin: 0.35rem 0 0.8rem;
+}
+
+.descricao-certificacao {
+  color: var(--texto-secundario);
+  font-size: 0.9rem;
+  margin: 0 0 1.4rem;
+}
+
+.card-certificacao .botao-pequeno { margin-top: auto; align-self: flex-start; }
+
+.selo-placeholder {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #080808;
+  background-color: var(--dourado);
+  border-radius: 4px;
+  padding: 0.1rem 0.45rem;
+  margin-bottom: 0.6rem;
+}
