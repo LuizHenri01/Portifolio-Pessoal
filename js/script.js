@@ -19,6 +19,7 @@ const projetos = [
   }
 ];
 
+
 /* Certificações.
    lembrar de marcar placeholder: true enquanto o item for apenas exemplo de layout. */
 const certificacoes = [
@@ -32,6 +33,18 @@ const certificacoes = [
   }
 ];
 
+/* Minha jornada: etapas em ordem cronológica de aprendizado. */
+const jornada = [
+  { titulo: "Ciência da Computação", descricao: "Início da graduação e da base teórica." },
+  { titulo: "Fundamentos de programação", descricao: "Lógica, algoritmos e estruturas básicas." },
+  { titulo: "Python", descricao: "Primeira linguagem principal, usada até hoje no back-end e em automação." },
+  { titulo: "Desenvolvimento web", descricao: "HTML5, CSS3 e JavaScript para construir interfaces." },
+  { titulo: "Git e GitHub", descricao: "Versionamento e organização dos projetos." },
+  { titulo: "SQL e dados", descricao: "Consultas, modelagem e análise com Pandas." },
+  { titulo: "Cloud e AWS", descricao: "Fundamentos de infraestrutura em nuvem." },
+  { titulo: "Projetos práticos", descricao: "Aplicar cada assunto estudado em algo que funcione de verdade." },
+  { titulo: "Próximos desafios", descricao: "Aprofundar Dados e Cloud e buscar a primeira oportunidade na área." }
+];
 
 // Evitar que aspas ou sinais nos dados quebrem o HTML geradi
 function escaparHTML(texto) {
@@ -134,6 +147,17 @@ function renderizarCertificacoes() {
   }).join("");
 }
 
+function renderizarJornada() {
+  const lista = document.getElementById("listaJornada");
+  if (!lista) return;
+
+  lista.innerHTML = jornada.map((etapa) => `
+    <li class="item-jornada">
+      <h3 class="titulo-jornada">${escaparHTML(etapa.titulo)}</h3>
+      <p class="descricao-jornada">${escaparHTML(etapa.descricao)}</p>
+    </li>
+  `).join("");
+}
 
 // Fecha o menu hamburger depois de clicar em um link no celular
 function inicializarNavegacao() {
@@ -188,4 +212,5 @@ document.addEventListener("DOMContentLoaded", () => {
   inicializarLinkAtivo();
   renderizarProjetos();
   renderizarCertificacoes();
+  renderizarJornada();
 });
