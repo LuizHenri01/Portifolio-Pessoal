@@ -686,3 +686,96 @@ code {
   margin: 0.3rem 0 0;
   max-width: 60ch;
 }
+
+.grade-contato {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  max-width: 920px;
+}
+
+.card-contato {
+  display: block;
+  background-color: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.6rem 1.5rem;
+  text-align: center;
+  transition: border-color var(--transicao), transform var(--transicao);
+}
+
+.card-contato:hover {
+  border-color: var(--dourado);
+  transform: translateY(-4px);
+  color: var(--branco);
+}
+
+.card-contato i { font-size: 1.6rem; color: var(--dourado); }
+
+.rotulo-contato {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 0.7rem;
+}
+
+.valor-contato {
+  display: block;
+  font-size: 0.87rem;
+  color: var(--texto-secundario);
+  word-break: break-word;
+}
+
+.rodape {
+  background-color: var(--fundo);
+  border-top: 1px solid var(--borda);
+  padding: 3rem 0 2rem;
+}
+
+.conteudo-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.marca-rodape {
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.frase-rodape { color: var(--texto-secundario); font-size: 0.9rem; margin: 0.25rem 0 0; }
+
+.links-rodape { display: flex; gap: 1rem; list-style: none; padding: 0; margin: 0; }
+
+.links-rodape a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  color: var(--texto-secundario);
+  font-size: 1.1rem;
+  transition: border-color var(--transicao), color var(--transicao);
+}
+
+.links-rodape a:hover { border-color: var(--dourado); color: var(--dourado-claro); }
+
+.direitos {
+  margin: 2.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--borda);
+  font-size: 0.82rem;
+  color: var(--texto-secundario);
+  text-align: center;
+}
+
+@media (max-width: 767.98px) {
+  .grade-contato { grid-template-columns: 1fr; }
+  .conteudo-rodape { flex-direction: column; align-items: flex-start; }
+}
