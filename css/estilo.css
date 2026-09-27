@@ -779,3 +779,40 @@ code {
   .grade-contato { grid-template-columns: 1fr; }
   .conteudo-rodape { flex-direction: column; align-items: flex-start; }
 }
+
+.animar-entrada,
+.animar-esquerda,
+.animar-direita {
+  opacity: 0;
+  transition: opacity 500ms ease, transform 500ms ease;
+  will-change: opacity, transform;
+}
+
+.animar-entrada { transform: translateY(20px); }
+.animar-esquerda { transform: translateX(-24px); }
+.animar-direita { transform: translateX(24px); }
+
+.animar-entrada.visivel,
+.animar-esquerda.visivel,
+.animar-direita.visivel {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respeita quem prefere menos movimento na tela */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animar-entrada,
+  .animar-esquerda,
+  .animar-direita {
+    opacity: 1;
+    transform: none;
+  }
+}

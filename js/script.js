@@ -173,6 +173,7 @@ function inicializarNavegacao() {
   });
 }
 
+
 function inicializarEfeitoNavbar() {
   const navbar = document.getElementById("navbarPrincipal");
   if (!navbar) return;
@@ -206,6 +207,33 @@ function inicializarLinkAtivo() {
   secoes.forEach((secao) => observador.observe(secao));
 }
 
+// Observa os elementos marcados e revela quando entram na tela
+function inicializarAnimacoesScroll() {
+  const elementos = document.querySelectorAll(".animar-entrada, .animar-esquerda, .animar-direita");
+
+  const semMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (semMovimento || !("IntersectionObserver" in window)) {
+    elementos.forEach((elemento) => elemento.classList.add("visivel"));
+    return;
+  }
+
+  const observador = new IntersectionObserver((entradas, instancia) => {
+    entradas.forEach((entrada) => {
+      if (!entrada.isIntersecting) return;
+
+      entrada.target.classList.add("visivel");
+      instancia.unobserve(entrada.target);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+
+  elementos.forEach((elemento) => observador.observe(elemento));
+}
+
+function inicializarAnoAtual() {
+  const ano = document.getElementById("anoAtual");
+  if (ano) ano.textContent = new Date().getFullYear();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   inicializarNavegacao();
   inicializarEfeitoNavbar();
@@ -213,4 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderizarProjetos();
   renderizarCertificacoes();
   renderizarJornada();
+  inicializarAnimacoesScroll();
+  inicializarAnoAtual();
 });
