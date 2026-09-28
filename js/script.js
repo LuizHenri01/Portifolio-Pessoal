@@ -100,7 +100,7 @@ function renderizarProjetos() {
   if (!lista) return;
 
   lista.innerHTML = projetos.map((projeto) => `
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4 animar-entrada">
       <article class="card-projeto">
         <div class="projeto-midia">${montarPreviaProjeto(projeto)}</div>
         <div class="projeto-corpo">
@@ -130,7 +130,7 @@ function renderizarCertificacoes() {
       : '<span class="chip">Link do certificado em breve</span>';
 
     return `
-      <div class="col-md-6 col-lg-4">
+      <div class="col-md-6 col-lg-4 animar-entrada">
         <article class="card-certificacao">
           <div class="topo-certificacao">
             <i class="bi bi-award" aria-hidden="true"></i>
@@ -152,7 +152,7 @@ function renderizarJornada() {
   if (!lista) return;
 
   lista.innerHTML = jornada.map((etapa) => `
-    <li class="item-jornada">
+    <li class="item-jornada animar-esquerda">
       <h3 class="titulo-jornada">${escaparHTML(etapa.titulo)}</h3>
       <p class="descricao-jornada">${escaparHTML(etapa.descricao)}</p>
     </li>
