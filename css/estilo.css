@@ -799,7 +799,6 @@ code {
   transform: none;
 }
 
-/* Respeita quem prefere menos movimento na tela */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
@@ -815,4 +814,48 @@ code {
     opacity: 1;
     transform: none;
   }
+}
+
+.pular-conteudo {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 2000;
+  background: var(--dourado);
+  color: #080808;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+}
+
+.pular-conteudo:focus {
+  left: 1rem;
+  top: 1rem;
+  color: #080808;
+}
+
+main:focus { outline: none; }
+
+@media (pointer: coarse) {
+  .botao-pequeno,
+  .botao-dourado,
+  .botao-contorno,
+  .link-rede {
+    min-height: 44px;
+  }
+
+  .links-rodape a {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 359.98px) {
+  .container { padding-left: 1rem; padding-right: 1rem; }
+  .card-skill,
+  .card-certificacao,
+  .projeto-corpo { padding: 1.25rem; }
+}
+
+@media (min-width: 1400px) {
+  .container { max-width: 1200px; }
 }
