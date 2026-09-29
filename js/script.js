@@ -9,13 +9,13 @@ const projetos = [
     repositorio: ""
   },
   {
-    nome: "Projeto Web",
-    descricao: "Interface responsiva construída com HTML, CSS e JavaScript, com foco em acessibilidade.",
-    tecnologias: ["HTML5", "CSS3", "JavaScript"],
-    imagem: "",
-    icone: "bi-window",
+    nome: "Auto Fácil",
+    descricao: "Sistema acadêmico de gestão para revenda de veículos, com cadastro e controle em banco de dados local.",
+    tecnologias: ["Python", "Tkinter", "SQLite"],
+    imagem: "img/projetos/auto-facil.png",
+    icone: "bi-car-front",
     link: "",
-    repositorio: ""
+    repositorio: "https://github.com/LuizHenri01/AutoFacilDF"
   }
 ];
 
