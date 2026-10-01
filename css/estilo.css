@@ -361,15 +361,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .lista-perfil i { color: var(--dourado); font-size: 1.05rem; margin-top: 0.15rem; }
 
-.links-perfil {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1.75rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--borda);
-}
-
 .botao-pequeno {
   display: inline-flex;
   align-items: center;
@@ -685,6 +676,49 @@ code {
   font-size: 0.92rem;
   margin: 0.3rem 0 0;
   max-width: 60ch;
+}
+
+.gatilho-jornada {
+  all: unset;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem 0.3rem 0;
+  border-radius: 6px;
+  transition: background-color var(--transicao);
+}
+
+.gatilho-jornada:hover,
+.gatilho-jornada:focus-visible {
+  background-color: rgba(212, 175, 55, 0.08);
+}
+
+.gatilho-jornada:focus-visible {
+  outline: 2px solid var(--dourado);
+  outline-offset: 2px;
+}
+
+.seta-jornada {
+  flex-shrink: 0;
+  color: var(--dourado);
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  transition: transform var(--transicao);
+}
+
+.gatilho-jornada[aria-expanded="true"] .seta-jornada {
+  transform: rotate(180deg);
+}
+
+.detalhe-jornada {
+  color: var(--texto-secundario);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  margin: 0.85rem 0 0;
+  max-width: 58ch;
 }
 
 .grade-contato {

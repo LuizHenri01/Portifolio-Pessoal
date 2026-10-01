@@ -35,15 +35,51 @@ const certificacoes = [
 
 /* Minha jornada: etapas em ordem cronológica de aprendizado. */
 const jornada = [
-  { titulo: "Ciência da Computação", descricao: "Início da graduação e da base teórica." },
-  { titulo: "Fundamentos de programação", descricao: "Lógica, algoritmos e estruturas básicas." },
-  { titulo: "Python", descricao: "Primeira linguagem principal, usada até hoje no back-end e em automação." },
-  { titulo: "Desenvolvimento web", descricao: "HTML5, CSS3 e JavaScript para construir interfaces." },
-  { titulo: "Git e GitHub", descricao: "Versionamento e organização dos projetos." },
-  { titulo: "SQL e dados", descricao: "Consultas, modelagem e análise com Pandas." },
-  { titulo: "Cloud e AWS", descricao: "Fundamentos de infraestrutura em nuvem." },
-  { titulo: "Projetos práticos", descricao: "Aplicar cada assunto estudado em algo que funcione de verdade." },
-  { titulo: "Próximos desafios", descricao: "Aprofundar Dados e Cloud e buscar a primeira oportunidade na área." }
+  {
+    titulo: "Ciência da Computação",
+    descricao: "Início da graduação e da base teórica.",
+    detalhes: "Entrei na faculdade em fevereiro de 2025 — o início da adaptação a uma rotina nova de estudos."
+  },
+  {
+    titulo: "Fundamentos de programação",
+    descricao: "Lógica, algoritmos e estruturas básicas.",
+    detalhes: "Aprendi o básico de Fundamentos de Programação e Algoritmos. Aprendi tambem a quebrar grandes problemas em pequenas partes, para resolve-las de forma mais intuitiva."
+  },
+  {
+    titulo: "Python",
+    descricao: "Primeira linguagem principal, usada até hoje no back-end e em automação.",
+    detalhes: "Python foi minha primeira linguagem de programação, gostei pois tinha/tem um universo gigante de bibliotecas para explorar. ."
+  },
+  {
+    titulo: "Desenvolvimento web",
+    descricao: "HTML5, CSS3 e JavaScript para construir interfaces.",
+    detalhes: "A partir daí expandindo horizontes com HTML, CSS e JavaScript para dar vida visual à lógica. Assim, integrando a bagagem de Python com o poder do Front-End puro ."
+  },
+  {
+    titulo: "Git e GitHub",
+    descricao: "Versionamento e organização dos projetos.",
+    detalhes: "Aprendi a versionar código com Git e GitHub, incluindo boas práticas na escrita das mensagens de commit."
+  },
+  {
+    titulo: "SQL e dados",
+    descricao: "Consultas, modelagem e análise com Pandas.",
+    detalhes: "Da interface em HTML/CSS/JS à lógica em Python, agora estruturando e gerenciando dados com SQL. Primeiro contato foi com SQLite, depois PostgreSQL. Também aprendi a manipular dados com Pandas."
+  },
+  {
+    titulo: "Cloud e AWS",
+    descricao: "Fundamentos de infraestrutura em nuvem.",
+    detalhes: "Comecei a me interessar por cloud computing. Primeiro plataforma de nuvem que comecei a estudar foi a AWS. Mesmo com AWS sendo o foco principal, recentemente começei a estudar fundamentos do Google Cloud."
+  },
+  {
+    titulo: "Projetos práticos",
+    descricao: "Aplicar cada assunto estudado em algo que funcione de verdade.",
+    detalhes: "primeiro projeto feito e subido ao github foi o Auto Fácil, um sistema acadêmico de gestão para revenda de veículos, com cadastro e controle em banco de dados local. Depois disso, fiz o Analisador de Vendas, que lê planilhas de vendas e gera resumos por produto e período. E no futuro pretendo fazer mais projetos, para aplicar o que aprendi e aprender coisas novas."
+  },
+  {
+    titulo: "Próximos desafios",
+    descricao: "Aprofundar Dados e Cloud e buscar a primeira oportunidade na área.",
+    detalhes: "Quero focar na área de Dados e buscar a primeira oportunidade nessa trilha."
+  }
 ];
 
 // Evitar que aspas ou sinais nos dados quebrem o HTML geradi
@@ -151,12 +187,24 @@ function renderizarJornada() {
   const lista = document.getElementById("listaJornada");
   if (!lista) return;
 
-  lista.innerHTML = jornada.map((etapa) => `
-    <li class="item-jornada animar-esquerda">
-      <h3 class="titulo-jornada">${escaparHTML(etapa.titulo)}</h3>
-      <p class="descricao-jornada">${escaparHTML(etapa.descricao)}</p>
-    </li>
-  `).join("");
+  lista.innerHTML = jornada.map((etapa, indice) => {
+    const idDetalhe = `jornada-detalhe-${indice}`;
+    return `
+      <li class="item-jornada animar-esquerda">
+        <button class="gatilho-jornada" type="button" data-bs-toggle="collapse"
+                data-bs-target="#${idDetalhe}" aria-expanded="false" aria-controls="${idDetalhe}">
+          <span>
+            <h3 class="titulo-jornada">${escaparHTML(etapa.titulo)}</h3>
+            <p class="descricao-jornada">${escaparHTML(etapa.descricao)}</p>
+          </span>
+          <i class="bi bi-chevron-down seta-jornada" aria-hidden="true"></i>
+        </button>
+        <div class="collapse" id="${idDetalhe}">
+          <p class="detalhe-jornada">${escaparHTML(etapa.detalhes)}</p>
+        </div>
+      </li>
+    `;
+  }).join("");
 }
 
 // Fecha o menu hamburger depois de clicar em um link no celular
