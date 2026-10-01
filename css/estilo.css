@@ -285,7 +285,39 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 @media (max-width: 767.98px) {
-  .hero { padding: calc(var(--altura-navbar) + 2.5rem) 0 4rem; }
+  .row { margin-left: 0; margin-right: 0; }
+
+  .navbar-portfolio .container { padding-left: 1rem; padding-right: 1rem; }
+
+  .navbar-collapse {
+    margin-top: 0.5rem;
+    padding: 0.35rem;
+  }
+
+  .link-navbar {
+    font-size: 0.92rem;
+    padding: 0.65rem 0.8rem;
+  }
+
+  .hero {
+    padding: calc(var(--altura-navbar) + 2.25rem) 0 3.75rem;
+  }
+
+  .titulo-hero {
+    font-size: clamp(2.2rem, 11vw, 3rem);
+    line-height: 1.08;
+  }
+
+  .subtitulo-hero {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .separador-dourado { margin: 0 0.35rem; }
+
+  .texto-hero {
+    margin: 1rem 0 1.6rem;
+  }
 
   .acoes-hero .botao-dourado,
   .acoes-hero .botao-contorno {
@@ -294,8 +326,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     padding: 0.85rem 1.25rem;
   }
 
-  .redes-hero { gap: 1.25rem; margin-top: 2rem; }
-  .codigo { font-size: 0.76rem; }
+  .redes-hero { gap: 0.75rem 1.1rem; margin-top: 1.75rem; }
+
+  .cartao-codigo { margin-top: 0.5rem; }
+
+  .barra-cartao { padding: 0.6rem 0.85rem; }
+
+  .codigo {
+    padding: 1rem 0.85rem;
+    font-size: 0.7rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
 }
 
 .secao {
@@ -385,7 +428,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .texto-sobre strong { color: var(--branco); font-weight: 600; }
 
 @media (max-width: 767.98px) {
-  .secao { padding: 4rem 0; }
+  .secao { padding: 3.75rem 0; }
+
+  .cabecalho-secao { margin-bottom: 2rem; }
+
+  .titulo-secao { font-size: clamp(1.7rem, 8vw, 2rem); }
+
+  .texto-secao { margin-top: 1rem; }
+
+  .cartao-perfil,
+  .card-skill,
+  .card-certificacao,
+  .card-contato { padding: 1.25rem; }
+
+  .lista-perfil { gap: 0.85rem; }
+
+  .lista-perfil li { font-size: 0.9rem; }
+
+  .lista-habilidades { gap: 0.35rem; }
+
+  .lista-habilidades li,
+  .chip { font-size: 0.76rem; padding: 0.22rem 0.6rem; }
+
+  .texto-sobre p { margin-bottom: 1rem; }
 }
 
 .texto-secao {
@@ -692,6 +757,7 @@ code {
 
 .gatilho-jornada {
   all: unset;
+  box-sizing: border-box;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -770,6 +836,20 @@ code {
 
   .cartao-jornada,
   .item-jornada[data-lado="direita"] .cartao-jornada { grid-column: 2; }
+
+  .item-jornada { padding-bottom: 1.5rem; }
+
+  .gatilho-jornada {
+    gap: 0.7rem;
+    padding: 0.95rem 1rem;
+  }
+
+  .titulo-jornada { font-size: 1rem; }
+
+  .descricao-jornada,
+  .detalhe-jornada { font-size: 0.84rem; }
+
+  .detalhe-jornada { padding: 0 1rem 1rem; }
 }
 
 .grade-contato {
@@ -861,8 +941,25 @@ code {
 }
 
 @media (max-width: 767.98px) {
-  .grade-contato { grid-template-columns: 1fr; }
-  .conteudo-rodape { flex-direction: column; align-items: flex-start; }
+  .grade-contato { grid-template-columns: 1fr; gap: 0.85rem; }
+
+  .card-contato { text-align: left; }
+
+  .card-contato i {
+    display: block;
+    margin-bottom: 0.65rem;
+  }
+
+  .conteudo-rodape {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .direitos {
+    margin-top: 2rem;
+    line-height: 1.5;
+  }
 }
 
 .animar-entrada,
@@ -942,7 +1039,13 @@ main:focus { outline: none; }
 }
 
 @media (max-width: 359.98px) {
-  .container { padding-left: 1rem; padding-right: 1rem; }
+  .container { padding-left: 0.9rem; padding-right: 0.9rem; }
+
+  .titulo-hero { font-size: 2.05rem; }
+
+  .acoes-hero .botao-dourado,
+  .acoes-hero .botao-contorno { font-size: 0.9rem; }
+
   .card-skill,
   .card-certificacao,
   .projeto-corpo { padding: 1.25rem; }
