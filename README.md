@@ -1,69 +1,37 @@
-# Portfólio — Luiz Henrique
+# Portfólio do Luiz Henrique
 
-Site pessoal onde conto minha trajetória na faculdade: quem sou, meus
-projetos, minhas certificações e a linha do tempo de como cheguei até aqui em
-tecnologia.
+Meu site pessoal, onde conto como está sendo a faculdade de Ciência da Computação e mostro o que venho construindo: projetos, certificações e a linha do tempo de como cheguei até aqui.
 
-Site estático: sem backend, sem build, sem Node.js. Basta abrir o `index.html`.
+Site no ar: [luiz-henrique-dev-pearl.vercel.app](https://luiz-henrique-dev-pearl.vercel.app)
 
-## Tecnologias
+O site tem uma apresentação, a seção sobre mim, skills, projetos com link do GitHub, certificações, a minha jornada e contato por e-mail, LinkedIn e GitHub (sem formulário, só links diretos).
 
-- HTML5 (semântico)
-- CSS3 (variáveis, Grid e Flexbox)
-- JavaScript puro (ES6+, sem bibliotecas)
-- Bootstrap 5.3 + Bootstrap Icons (via CDN)
+## Atualizações
 
-## Estrutura de pastas
+Vou atualizando o portfólio semanalmente. Projetos, certificações e a linha do tempo entram aqui conforme eu avanço. Os dados editáveis ficam em `js/script.js`.
 
-\`\`\`text
+## Como foi feito
+
+É um site estático em HTML5 semântico, CSS3 (variáveis, Grid e Flexbox) e JavaScript puro, com Bootstrap 5.3 e Bootstrap Icons via CDN. Não tem build nem backend, e a hospedagem é na Vercel.
+
+Também cuidei da acessibilidade: headings em ordem, link para pular ao conteúdo, foco visível, navegação por teclado e animações desativadas para quem usa `prefers-reduced-motion`. As imagens dos projetos carregam com `loading="lazy"`.
+
+## Estrutura
+
+```
 portfolio/
-│
-├── index.html          → toda a estrutura da página
-│
-├── css/
-│   └── estilo.css      → todo o CSS personalizado
-│
-├── js/
-│   └── script.js       → dados editáveis + comportamentos
-│
-├── img/
-│   └── projetos/       → prévias dos projetos (16:9)
-│
-└── README.md
-\`\`\`
+├── index.html        estrutura da página
+├── css/estilo.css    estilos personalizados
+├── js/script.js      dados editáveis e comportamentos
+└── img/projetos/     prévias dos projetos
+```
 
-## Seções do site
+## Rodando localmente
 
-- **Início** — apresentação e stack principal
-- **Sobre mim** — minha trajetória até o momento
-- **Skills** — tecnologias que uso, organizadas por área
-- **Projetos** — trabalhos que venho construindo, com link do GitHub
-- **Certificações** — cursos concluídos
-- **Minha jornada** — linha do tempo de como cheguei até aqui
-- **Contato** — e-mail, LinkedIn e GitHub
+É só abrir o `index.html` no navegador. Se preferir um servidor local, use o Live Server do VS Code ou, com Python instalado:
 
-## Como executar localmente
-
-Opção 1 — abrir direto: dê um duplo clique no `index.html`.
-
-Opção 2 — servidor local (recomendado, evita diferenças de caminho):
-
-\`\`\`bash
-# com a extensão Live Server do VS Code: clique em "Go Live"
-
-# ou, se tiver Python instalado:
+```bash
 python -m http.server 5500
-# acesse http://localhost:5500
-\`\`\`
+```
 
-## Contato
-
-O site é estático, então os cards de contato usam links diretos: `mailto:` para
-e-mail e URLs externas para LinkedIn e GitHub. Não há formulário nem backend.
-
-## Acessibilidade e performance
-
-- HTML semântico (`header`, `nav`, `main`, `section`, `footer`) e headings em ordem
-- Link "Pular para o conteúdo", foco visível e navegação por teclado
-- Animações desativadas para quem usa `prefers-reduced-motion`
-- `loading="lazy"` nas imagens de projeto e nenhuma biblioteca JS além do Bootstrap
+Depois acesse http://localhost:5500.
