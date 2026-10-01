@@ -189,18 +189,24 @@ function renderizarJornada() {
 
   lista.innerHTML = jornada.map((etapa, indice) => {
     const idDetalhe = `jornada-detalhe-${indice}`;
+    const lado = indice % 2 === 0 ? "esquerda" : "direita";
+    const animacao = lado === "esquerda" ? "animar-esquerda" : "animar-direita";
+
     return `
-      <li class="item-jornada animar-esquerda">
-        <button class="gatilho-jornada" type="button" data-bs-toggle="collapse"
-                data-bs-target="#${idDetalhe}" aria-expanded="false" aria-controls="${idDetalhe}">
-          <span>
-            <h3 class="titulo-jornada">${escaparHTML(etapa.titulo)}</h3>
-            <p class="descricao-jornada">${escaparHTML(etapa.descricao)}</p>
-          </span>
-          <i class="bi bi-chevron-down seta-jornada" aria-hidden="true"></i>
-        </button>
-        <div class="collapse" id="${idDetalhe}">
-          <p class="detalhe-jornada">${escaparHTML(etapa.detalhes)}</p>
+      <li class="item-jornada ${animacao}" data-lado="${lado}">
+        <div class="ponto-jornada" aria-hidden="true"><span>${indice + 1}</span></div>
+        <div class="cartao-jornada">
+          <button class="gatilho-jornada" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#${idDetalhe}" aria-expanded="false" aria-controls="${idDetalhe}">
+            <span>
+              <h3 class="titulo-jornada">${escaparHTML(etapa.titulo)}</h3>
+              <p class="descricao-jornada">${escaparHTML(etapa.descricao)}</p>
+            </span>
+            <i class="bi bi-chevron-down seta-jornada" aria-hidden="true"></i>
+          </button>
+          <div class="collapse" id="${idDetalhe}">
+            <p class="detalhe-jornada">${escaparHTML(etapa.detalhes)}</p>
+          </div>
         </div>
       </li>
     `;

@@ -634,49 +634,66 @@ code {
 
 .jornada {
   list-style: none;
-  margin: 0;
-  padding: 0 0 0 1.75rem;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 880px;
   position: relative;
-  max-width: 720px;
 }
 
+/* Linha central que conecta todos os marcos */
 .jornada::before {
   content: "";
   position: absolute;
-  left: 5px;
+  left: 50%;
   top: 6px;
   bottom: 6px;
   width: 1px;
+  transform: translateX(-50%);
   background: linear-gradient(180deg, var(--dourado), var(--borda));
 }
 
-.item-jornada { position: relative; padding-bottom: 2rem; }
+.item-jornada {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  column-gap: 1.5rem;
+  align-items: start;
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+
 .item-jornada:last-child { padding-bottom: 0; }
 
-.item-jornada::before {
-  content: "";
-  position: absolute;
-  left: -1.75rem;
-  top: 0.55rem;
-  width: 11px;
-  height: 11px;
+/* Marcador numerado sobre a linha central */
+.ponto-jornada {
+  grid-column: 2;
+  width: 40px;
+  height: 40px;
+  margin-top: 4px;
   border-radius: 50%;
   background-color: var(--fundo-secundario);
   border: 2px solid var(--dourado);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fonte-codigo);
+  font-size: 0.85rem;
+  color: var(--dourado);
+  z-index: 1;
 }
 
-.titulo-jornada {
-  font-family: var(--fonte-titulo);
-  font-size: 1.05rem;
-  font-weight: 600;
+/* Por padrão, o cartão fica na coluna esquerda... */
+.cartao-jornada { grid-column: 1; }
+/* ...e nos itens marcados "direita" (índice ímpar), vai para a direita */
+.item-jornada[data-lado="direita"] .cartao-jornada { grid-column: 3; }
+
+.cartao-jornada {
+  background-color: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  transition: border-color var(--transicao), transform var(--transicao);
 }
 
-.descricao-jornada {
-  color: var(--texto-secundario);
-  font-size: 0.92rem;
-  margin: 0.3rem 0 0;
-  max-width: 60ch;
-}
+.cartao-jornada:hover { border-color: var(--dourado-transparente); transform: translateY(-2px); }
 
 .gatilho-jornada {
   all: unset;
@@ -686,39 +703,60 @@ code {
   gap: 1rem;
   width: 100%;
   cursor: pointer;
-  padding: 0.3rem 0.6rem 0.3rem 0;
-  border-radius: 6px;
-  transition: background-color var(--transicao);
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--raio);
 }
 
-.gatilho-jornada:hover,
-.gatilho-jornada:focus-visible {
-  background-color: rgba(212, 175, 55, 0.08);
+.gatilho-jornada:hover, .gatilho-jornada:focus-visible {
+  background-color: rgba(212, 175, 55, 0.06);
 }
 
 .gatilho-jornada:focus-visible {
   outline: 2px solid var(--dourado);
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 .seta-jornada {
   flex-shrink: 0;
   color: var(--dourado);
   font-size: 0.85rem;
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
   transition: transform var(--transicao);
 }
 
-.gatilho-jornada[aria-expanded="true"] .seta-jornada {
-  transform: rotate(180deg);
-}
+.gatilho-jornada[aria-expanded="true"] .seta-jornada { transform: rotate(180deg); }
 
 .detalhe-jornada {
   color: var(--texto-secundario);
   font-size: 0.88rem;
   line-height: 1.75;
-  margin: 0.85rem 0 0;
-  max-width: 58ch;
+  margin: 0;
+  padding: 0 1.25rem 1.25rem;
+}
+
+/* Deixa o abrir/fechar do Bootstrap também esmaecer, não só mudar de altura */
+.collapsing { transition: height 320ms ease, opacity 320ms ease; opacity: 0; }
+.collapse.show { opacity: 1; }
+
+/* No celular não cabem dois lados: tudo vira uma coluna, linha à esquerda */
+@media (max-width: 767.98px) {
+  .item-jornada {
+    grid-template-columns: 32px 1fr;
+    column-gap: 1rem;
+  }
+
+  .jornada::before { left: 15px; }
+
+  .ponto-jornada {
+    grid-column: 1;
+    width: 32px;
+    height: 32px;
+    margin-top: 2px;
+    font-size: 0.72rem;
+  }
+
+  .cartao-jornada,
+  .item-jornada[data-lado="direita"] .cartao-jornada { grid-column: 2; }
 }
 
 .grade-contato {
