@@ -43,17 +43,17 @@ const jornada = [
   {
     titulo: "Fundamentos de programação",
     descricao: "Lógica, algoritmos e estruturas básicas.",
-    detalhes: "Aprendi o básico de Fundamentos de Programação e Algoritmos. Aprendi tambem a quebrar grandes problemas em pequenas partes, para resolve-las de forma mais intuitiva."
+    detalhes: "Aprendi os fundamentos de programação e algoritmos. Também aprendi a dividir problemas complexos em partes menores para resolvê-los de forma mais intuitiva."
   },
   {
     titulo: "Python",
     descricao: "Primeira linguagem principal, usada até hoje no back-end e em automação.",
-    detalhes: "Python foi minha primeira linguagem de programação, gostei pois tinha/tem um universo gigante de bibliotecas para explorar. ."
+    detalhes: "Python foi minha primeira linguagem de programação. Gostei da linguagem pela grande variedade de bibliotecas e possibilidades que ela oferece."
   },
   {
     titulo: "Desenvolvimento web",
     descricao: "HTML5, CSS3 e JavaScript para construir interfaces.",
-    detalhes: "A partir daí expandindo horizontes com HTML, CSS e JavaScript para dar vida visual à lógica. Assim, integrando a bagagem de Python com o poder do Front-End puro ."
+    detalhes: "Depois, ampliei meus horizontes com HTML, CSS e JavaScript, conectando a lógica de programação à construção de interfaces web."
   },
   {
     titulo: "Git e GitHub",
@@ -68,12 +68,12 @@ const jornada = [
   {
     titulo: "Cloud e AWS",
     descricao: "Fundamentos de infraestrutura em nuvem.",
-    detalhes: "Comecei a me interessar por cloud computing. Primeiro plataforma de nuvem que comecei a estudar foi a AWS. Mesmo com AWS sendo o foco principal, recentemente começei a estudar fundamentos do Google Cloud."
+    detalhes: "Comecei a me interessar por cloud computing e iniciei meus estudos pela AWS. Atualmente, também estou conhecendo os fundamentos do Google Cloud."
   },
   {
     titulo: "Projetos práticos",
     descricao: "Aplicar cada assunto estudado em algo que funcione de verdade.",
-    detalhes: "primeiro projeto feito e subido ao github foi o Auto Fácil, um sistema acadêmico de gestão para revenda de veículos, com cadastro e controle em banco de dados local. Depois disso, fiz o Analisador de Vendas, que lê planilhas de vendas e gera resumos por produto e período. E no futuro pretendo fazer mais projetos, para aplicar o que aprendi e aprender coisas novas."
+    detalhes: "Meu primeiro projeto publicado no GitHub foi o Auto Fácil, um sistema acadêmico de gestão para revenda de veículos, com cadastro e controle em banco de dados local. Depois, desenvolvi o Analisador de Vendas, que lê planilhas e gera resumos por produto e período. Quero continuar criando projetos para aplicar o que aprendi e explorar novos desafios."
   },
   {
     titulo: "Próximos desafios",
@@ -82,7 +82,7 @@ const jornada = [
   }
 ];
 
-// Evitar que aspas ou sinais nos dados quebrem o HTML geradi
+// Evita que caracteres especiais nos dados quebrem o HTML gerado.
 function escaparHTML(texto) {
   return String(texto)
     .replace(/&/g, "&amp;")
@@ -198,9 +198,9 @@ function renderizarJornada() {
         <div class="cartao-jornada">
           <button class="gatilho-jornada" type="button" data-bs-toggle="collapse"
                   data-bs-target="#${idDetalhe}" aria-expanded="false" aria-controls="${idDetalhe}">
-            <span>
-              <h3 class="titulo-jornada">${escaparHTML(etapa.titulo)}</h3>
-              <p class="descricao-jornada">${escaparHTML(etapa.descricao)}</p>
+            <span class="conteudo-gatilho-jornada">
+              <span class="titulo-jornada" role="heading" aria-level="3">${escaparHTML(etapa.titulo)}</span>
+              <span class="descricao-jornada">${escaparHTML(etapa.descricao)}</span>
             </span>
             <i class="bi bi-chevron-down seta-jornada" aria-hidden="true"></i>
           </button>
