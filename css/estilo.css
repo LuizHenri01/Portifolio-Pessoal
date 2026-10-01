@@ -884,6 +884,13 @@ code {
   transform: none;
 }
 
+@media (max-width: 767.98px) {
+  .animar-esquerda,
+  .animar-direita {
+    transform: translateY(16px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
